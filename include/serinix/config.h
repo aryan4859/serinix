@@ -1,0 +1,63 @@
+/*
+ * serinix/include/serinix/config.h
+ *
+ * Kernel tuning options and configuration settings for Serinix OS.
+ * Includes parameters for process limits, memory management, file system configuration,
+ * buffer management, and other system settings.
+ * Also provides options for debugging and hardware configuration toggles.
+ */
+
+#ifndef _SERINIX_CONFIG_H
+#define _SERINIX_CONFIG_H
+
+/* kernel tuning options */
+#define NR_PROCS		64	/* max. number of processes */
+#define NR_CALLOUTS		NR_PROCS	/* max. active callouts */
+#define NR_MOUNT_POINTS		8	/* max. number of mounted filesystems */
+#define NR_OPENS		1024	/* max. number of opened files */
+#define NR_FLOCKS		(NR_PROCS * 5)	/* max. number of flocks */
+
+#define FREE_PAGES_RATIO	5	/* % minimum of free memory pages */
+#define PAGE_HASH_PER_10K	10	/* % of % of hash buckets relative to the number of physical pages */
+#define MAX_PAGES_HASH		16	/* max. number of pages in hash table */
+#define BUFFER_PERCENTAGE	100	/* % of memory for buffer cache */
+#define BUFFER_HASH_PERCENTAGE	10	/* % of hash buckets relative to the size of the buffer table */
+#define NR_BUF_RECLAIM		250	/* buffers reclaimed in a single shot */
+#define BUFFER_DIRTY_RATIO	5	/* % of dirty buffers in buffer cache */
+#define INODE_PERCENTAGE	1	/* % of memory for the inode table and hash table */
+#define INODE_HASH_PERCENTAGE	10	/* % of hash buckets relative to the size of the inode table */
+
+#define MAX_PID_VALUE		32767	/* max. value for PID */
+#define SCREENS_LOG		6	/* max. number of screens in console's scroll back */
+#define MAX_SPU_NOTICES		10	/* max. number of messages on spurious interrupts */
+#define RAMDISK_DRIVES		1	/* num. of all-purpose ramdisk drives */
+#define NR_SYSCONSOLES		1	/* max. number of system consoles */
+
+
+/* toggle configuration options */
+#define CONFIG_PCI
+#define CONFIG_PCI_NAMES
+#undef CONFIG_SYSCALL_6TH_ARG
+#define CONFIG_SYSVIPC
+#define CONFIG_LAZY_USER_ADDR_CHECK
+#define CONFIG_BGA
+#undef CONFIG_KEXEC
+#define CONFIG_OFFSET64
+#undef CONFIG_VM_SPLIT22
+#undef CONFIG_FS_MINIX
+#undef CONFIG_MMAP2
+#define CONFIG_NET
+#define CONFIG_PRINTK64
+#define CONFIG_PSAUX
+
+
+/* configuration options to help debugging */
+#define CONFIG_VERBOSE_SEGFAULTS
+#undef CONFIG_QEMU_DEBUGCON
+
+
+#ifdef CUSTOM_CONFIG_H
+#include <serinix/custom_config.h>
+#endif
+
+#endif /* _SERINIX_CONFIG_H */
