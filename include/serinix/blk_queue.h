@@ -1,6 +1,6 @@
 // serinix/include/serinix/blk_queue.h
 
-#ifdef _SERINIX_BLKQUEUE_H
+#ifndef _SERINIX_BLKQUEUE_H
 #define _SERINIX_BLKQUEUE_H
 
 #include <serinix/config.h>

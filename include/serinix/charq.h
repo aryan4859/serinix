@@ -1,6 +1,6 @@
 // serinix/include/serinix/charq.h
 
-#ifdef _SERINIX_CHARQ_H
+#ifndef _SERINIX_CHARQ_H
 #define _SERINIX_CHARQ_H
 
 #define CBSIZE 32
